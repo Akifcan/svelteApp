@@ -25,3 +25,10 @@
 
 </script>
 
+<div class="container">
+	<ul class="list-group">
+		{#each songs as song}
+			<li class="list-group-item">{song.name} <b class="float-right">{song.author}</b> </li>
+		{/each}
+	</ul>
+</div>
