@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
-	let name = null
-	let author = null
+	let name = ''
+	let author = ''
 
 	let songs = [
 		{
@@ -22,6 +22,16 @@
 		}
 	]
 
+	function clearInputs(){
+		name = ''
+		author = ''
+	}
+
+	function addToSongList(){
+		songs = [...songs, {name: name, author: author}]
+		clearInputs()
+	}
+
 
 </script>
 
@@ -31,4 +41,11 @@
 			<li class="list-group-item">{song.name} <b class="float-right">{song.author}</b> </li>
 		{/each}
 	</ul>
+
+	<form class="mt-2" on:submit|preventDefault={addToSongList}>
+		<input type="text" class="form-control" bind:value={name} placeholder="Song Name">
+		<input type="text" class="form-control" bind:value={author} placeholder="Author">
+		<button class="btn btn-outline-primary btn-block" disabled={name=='' | author == ''}>Add</button>
+	</form>
+
 </div>
